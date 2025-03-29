@@ -1,0 +1,32 @@
+import numpy as np
+verh=['a','b','c','d','e','f']
+visited=[0,0,0,0,0,0]
+y=len(visited)
+global e
+e=[ [0,0,1,1,0,0],
+    [0,0,0,0,1,1],
+    [1,0,0,1,0,1],
+    [1,0,1,0,0,0],
+    [0,1,0,0,0,1],
+    [0,1,1,0,1,0]]
+
+
+count=0
+def dfs(i):
+    global count
+    global visited
+    count+=1
+    visited[i]=count
+    #print(count)
+    for w in range (len(visited)):
+        if e[i][w]==1:
+            #print(visited[w])
+            if visited[w]==0:
+                print(verh[w])
+                dfs(w)
+visited=6*[0]
+count=0
+for j in range (len(visited)):
+    if visited[j]==0:
+        print(verh[j])
+        dfs(j)
