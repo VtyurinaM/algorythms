@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+def gcd(m,n):
+    k=0
+    while n!=0:
+        r=m%n
+        m=n
+        n=r
+        k=k+1
+    return k
+def D_avg(n):
+    D=0
+    for i in range(0,n):
+        D=D+gcd(n,i)
+    return D/n
+
+#print("Enter N: ")
+#N=int(input())
+
+
+f=open("data.txt","w")
+for k in range(10,1110,10):
+    f.write(str(k)+"\t"+str(D_avg(k))+"\n")
+f.close()
+fn=input('file name: ')
+data=np.genfromtxt(fn,delimiter="\t")
+data_xy=np.transpose(data)
+plt.scatter(data_xy[0], data_xy[1])
+plt.plot()
+plt.show()
