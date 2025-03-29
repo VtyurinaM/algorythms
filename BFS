@@ -1,0 +1,32 @@
+import numpy as np
+
+v=['a','b','c','d','e','f']
+visited=[0,0,0,0,0,0]
+global e
+e=[ [0,0,1,1,0,0],
+    [0,0,0,0,1,1],
+    [1,0,0,1,0,1],
+    [1,0,1,0,0,0],
+    [0,1,0,0,0,1],
+    [0,1,1,0,1,0]]
+count=0
+def bfs(i,count):
+    count+=1
+    q=['a','b','c','d','e','f']
+    while len(q)!=0:
+        ind =0
+        for i in range(len(v)):
+            if q[0]==v[i]:ind=i
+        for i in range(len(v)):
+            if e[ind][i]==1:
+                if visited[i]==0:
+                    count+=1
+                    print(v[i])
+                    visited[i]=count
+                    q.append(v[i])
+        q.pop(0)
+for i in range(len(v)):
+    if visited[i]==0:
+        visited[i]=1
+        print(v[i])
+        bfs(i,count)
